@@ -15,9 +15,8 @@ export class SmartTableComponent {
 
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(private toastrService: NbToastrService, private _domSanitizer: DomSanitizer, private service: SmartTableData, private dataService: MyMovieServiceService) {
+  constructor(private toastrService: NbToastrService, private _domSanitizer: DomSanitizer, private dataService: MyMovieServiceService) {
     this.getMovies();
-    //this.testPOST();
   }
 
 
@@ -176,12 +175,24 @@ export class SmartTableComponent {
     }
   }
 
-  onSaveConfirm(event): void {
-    if (window.confirm('Are you sure you want to save?')) {
-      event.newData['name'] += ' + added in code';
-      event.confirm.resolve(event.newData);
+  onEditConfirm(event): void {
+    console.log(event.newData);
+    let p = event.newData.Popularity
+    console.log('Popularity:', p);
+    
+    if (this.hasEmptyValue(event.newData)) {
+      this.openRandomToast();
     } else {
-      event.confirm.reject();
+      console.log(event.newData);
+      this.dataService.updateMovie(event.newData).subscribe(
+        data => {
+          console.log("PUT Request is successful ", data);
+          event.confirm.resolve(data['data']);
+        },
+        error => {
+          console.log("Error", error);
+        }
+      )
     }
   }
 
@@ -200,35 +211,6 @@ export class SmartTableComponent {
         }
       )
     }
-  }
-
-  /**
-   * testPOST
-   */
-  public testPOST() {
-    var v = {
-      Name: "Van 3",
-      Director: "Stephen Sommers",
-      Year: 2004,
-      Gender: "Fantasía oscura",
-      Language: "Inglés",
-      Favorite: true,
-      Community_Score: 8.0,
-      IMDB: 10.0,
-      Style: "heroes",
-      MetaScore: 10.0,
-      Popularity: 50.0,
-      Image: "https://www.bolsamania.com/cine/wp-content/uploads/2017/07/1-35.jpg"
-    }
-
-    this.dataService.createMovie(v).subscribe(
-      data => {
-        console.log("POST Request is successful ", data);
-      },
-      error => {
-        console.log("Error", error);
-      }
-    )
   }
 
   index = 1;
@@ -299,7 +281,7 @@ export class SmartTableComponent {
   }
 
   getMovies() {
-    this.dataService.sendGetRequest().subscribe((data: any[]) => {
+    this.dataService.getMovies().subscribe((data: any[]) => {
       //console.log(data);
       if (data['status'] === 200) {
         //this.$Movies = data['data'];

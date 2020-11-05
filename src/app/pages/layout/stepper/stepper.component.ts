@@ -17,7 +17,7 @@ export class StepperComponent implements OnInit {
   constructor(private fb: FormBuilder, private dataService: MyMovieServiceService) { }
 
   getMovies() {
-    this.dataService.sendGetRequest().subscribe((data: any[]) => {
+    this.dataService.getMovies().subscribe((data: any[]) => {
       console.log(data);
       if (data['status'] === 200) {
         this.$Movies = data['data'];
@@ -52,7 +52,7 @@ export class StepperComponent implements OnInit {
 
     //this._getMovieGender('Accion')
     //this._getMovieSearch('Avengers')
-    //this.getMovies();
+    this.getMovies();
 
     this.firstForm = this.fb.group({
       firstCtrl: ['', Validators.required],

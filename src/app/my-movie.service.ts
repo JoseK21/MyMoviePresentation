@@ -10,7 +10,7 @@ export class MyMovieServiceService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public sendGetRequest() {
+  public getMovies() {
     return this.httpClient.get(this.REST_API_SERVER);
   }
 
@@ -24,5 +24,9 @@ export class MyMovieServiceService {
 
   public getMovieSearch(search) {
     return this.httpClient.get(this.REST_API_SERVER + '/search/'+ search);
+  }
+
+  public updateMovie(data_movie) {
+    return this.httpClient.put(this.REST_API_SERVER + '/modify', data_movie);
   }
 }
