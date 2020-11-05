@@ -49,7 +49,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.changeTheme('dark')
     this.currentTheme = this.themeService.currentTheme;
 
     this.userService.getUsers()

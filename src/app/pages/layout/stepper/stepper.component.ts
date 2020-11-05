@@ -1,4 +1,4 @@
-import { MyMovieServiceService } from 'app/my-movie-service.service';
+import { MyMovieServiceService } from 'app/my-movie.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -14,21 +14,45 @@ export class StepperComponent implements OnInit {
   thirdForm: FormGroup;
   $Movies = [];
 
-
-  constructor(private fb: FormBuilder, private dataService: MyMovieServiceService) {
-  }
+  constructor(private fb: FormBuilder, private dataService: MyMovieServiceService) { }
 
   getMovies() {
-    this.dataService.sendGetRequest().subscribe((data: any[])=>{
+    this.dataService.sendGetRequest().subscribe((data: any[]) => {
       console.log(data);
       if (data['status'] === 200) {
-        this.$Movies = data['data'];        
+        this.$Movies = data['data'];
       }
-    })  
+    })
   }
+
+  _getMovieGender(gender) {
+    this.dataService.getMovieGender(gender).subscribe(
+      data => {
+        console.log(data);
+        if (data['status'] === 200) {
+          this.$Movies = data['data'];
+        }
+      }, error => {
+        console.log("Error", error);
+      })
+  }
+
+  _getMovieSearch(search) {
+    this.dataService.getMovieSearch(search).subscribe(data => {
+      console.log(data);
+      if (data['status'] === 200) {
+        this.$Movies = data['data'];
+      }
+    }, error => {
+      console.log("Error", error);
+    })
+  }
+
   ngOnInit() {
 
-    this.getMovies();
+    //this._getMovieGender('Accion')
+    //this._getMovieSearch('Avengers')
+    //this.getMovies();
 
     this.firstForm = this.fb.group({
       firstCtrl: ['', Validators.required],
