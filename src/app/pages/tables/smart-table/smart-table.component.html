@@ -1,0 +1,11 @@
+<nb-card>
+  <nb-card-header>
+    Movies
+  </nb-card-header>
+
+  <nb-card-body>
+    <ng2-smart-table [settings]="settings" [source]="source" (createConfirm)="onCreateConfirm($event)"
+      (deleteConfirm)="onDeleteConfirm($event)" (editConfirm)="onSaveConfirm($event)">
+    </ng2-smart-table>
+  </nb-card-body>
+</nb-card>

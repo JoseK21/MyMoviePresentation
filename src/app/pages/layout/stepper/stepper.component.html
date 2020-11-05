@@ -1,0 +1,31 @@
+<div class="step-content row">
+  <div class="col-md-12 col-lg-2 col-xxxl-2" *ngFor="let movie of $Movies">
+
+    <nb-card size="medium">
+      <div class="picture"><img class="image" src="{{movie.Image}}" alt="Italian Trulli"></div>
+
+      <div class="details">
+        <div class="h4"> {{ movie.Name }} </div>
+        <div class="description">
+          UI Kitten is a framework that contains a set of commonly used UI.
+        </div>
+      </div>
+
+      <nb-card-footer>
+        <a href="https://akveo.github.io/react-native-ui-kitten?utm_campaign=ui_kitten%20-%20home%20-%20ngx_admin%20code%20embed&utm_source=ngx_admin&utm_medium=embedded&utm_content=iot_dashboard_kitten_card"
+          target="_blank">
+          <nb-icon icon="globe" pack="eva"></nb-icon>
+        </a>
+        <a href="https://itunes.apple.com/us/app/kitten-tricks/id1246143230" target="_blank">
+          <i class="link-icon ion-social-apple"></i>
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=com.akveo.kittenTricks" target="_blank">
+          <i class="link-icon ion-social-android"></i>
+        </a>
+        <a href="https://github.com/akveo/react-native-ui-kitten" target="_blank">
+          <nb-icon icon="github" pack="eva"></nb-icon>
+        </a>
+      </nb-card-footer>
+    </nb-card>
+  </div>
+</div>
