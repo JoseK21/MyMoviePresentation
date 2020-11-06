@@ -19,15 +19,19 @@ export class MyMovieServiceService {
   }
 
   public getMovieGender(data_search) {
-    let {Gender, IMDB, MetaScore, Community_Score, Favorite, Popularity} = data_search;
-    return this.httpClient.get(this.REST_API_SERVER + '/gender/' + Gender + '/'+ IMDB + '/'+ MetaScore + '/'+ Community_Score + '/'+ Favorite + '/' + Popularity );
+    let { Gender, IMDB, MetaScore, Community_Score, Favorite, Popularity } = data_search;
+    return this.httpClient.get(this.REST_API_SERVER + '/gender/' + Gender + '/' + IMDB + '/' + MetaScore + '/' + Community_Score + '/' + Favorite + '/' + Popularity);
   }
 
   public getMovieSearch(search) {
-    return this.httpClient.get(this.REST_API_SERVER + '/search/'+ search);
+    return this.httpClient.get(this.REST_API_SERVER + '/search/' + search);
   }
 
   public updateMovie(data_movie) {
     return this.httpClient.put(this.REST_API_SERVER + '/modify', data_movie);
+  }
+
+  public addComment(data_movie) {
+    return this.httpClient.post(this.REST_API_SERVER + '/add_comment', data_movie);
   }
 }

@@ -37,7 +37,7 @@ export class DialogNamePromptComponent {
 
 
     let data = { 'comment': comment, 'note': parseInt(note) }
-    console.log('data>', data);
+    /* console.log('data>', data); */
 
     if (comment.trim() == '' || note.trim() == '') {
       this.openRandomToast();
@@ -48,7 +48,7 @@ export class DialogNamePromptComponent {
   }
 
   openRandomToast() {
-    this.showToast(this.types[3], null, 'Please digit both field');
+    this.showToast(this.types[3], 'Warning', 'Please digit both field');
   }
 
   private showToast(type: NbComponentStatus, title: string, body: string) {
@@ -60,13 +60,10 @@ export class DialogNamePromptComponent {
       position: this.position,
       preventDuplicates: this.preventDuplicates,
     };
-    const titleContent = title ? `. ${title}` : '';
-
     this.index += 1;
-    this.toastrService.show(
-      body,
-      `Toast ${this.index}${titleContent}`,
-      config);
+    const titleContent = title ? `${this.index}. ${title}` : '';
+
+    this.toastrService.show(body, `${titleContent}`, config);
   }
 
 }

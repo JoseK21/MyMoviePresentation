@@ -176,17 +176,15 @@ export class SmartTableComponent {
   }
 
   onEditConfirm(event): void {
-    console.log(event.newData);
-    let p = event.newData.Popularity
-    console.log('Popularity:', p);
-    
+    /* console.log(event.newData); */
+
     if (this.hasEmptyValue(event.newData)) {
       this.openRandomToast();
     } else {
-      console.log(event.newData);
+      /* console.log(event.newData); */
       this.dataService.updateMovie(event.newData).subscribe(
         data => {
-          console.log("PUT Request is successful ", data);
+          /* console.log("PUT Request is successful ", data); */
           event.confirm.resolve(data['data']);
         },
         error => {
@@ -200,10 +198,10 @@ export class SmartTableComponent {
     if (this.hasEmptyValue(event.newData)) {
       this.openRandomToast();
     } else {
-      console.log(event.newData);
+      /* console.log(event.newData); */
       this.dataService.createMovie(event.newData).subscribe(
         data => {
-          console.log("POST Request is successful ", data);
+         /*  console.log("POST Request is successful ", data); */
           event.confirm.resolve(data['data']);
         },
         error => {
@@ -239,7 +237,7 @@ export class SmartTableComponent {
 
 
   openRandomToast() {
-    this.showToast(this.types[3], null, 'One or more attributes are empty');
+    this.showToast(this.types[3], 'Warning', 'One or more attributes are empty');
   }
 
   /*   setList() {
@@ -261,18 +259,15 @@ export class SmartTableComponent {
       position: this.position,
       preventDuplicates: this.preventDuplicates,
     };
-    const titleContent = title ? `. ${title}` : '';
-
     this.index += 1;
-    this.toastrService.show(
-      body,
-      `Toast ${this.index}${titleContent}`,
-      config);
+    const titleContent = title ? `${this.index}. ${title}` : '';
+
+    this.toastrService.show(body, `${titleContent}`, config);
   }
 
   public hasEmptyValue(obj) {
     const { Name, Director, Year, Gender, Language, Community_Score, Style, Popularity, Image } = obj
-    //console.log(obj);
+    /* console.log(obj); */
 
     if (Name === '' || Director === '' || Year === '' || Gender === '' || Language === '' || Community_Score === '' || Style === '' || Popularity === '' || Image === '') {
       return true;
@@ -282,7 +277,7 @@ export class SmartTableComponent {
 
   getMovies() {
     this.dataService.getMovies().subscribe((data: any[]) => {
-      //console.log(data);
+      /* console.log(data); */
       if (data['status'] === 200) {
         //this.$Movies = data['data'];
         this.source.load(data['data']);

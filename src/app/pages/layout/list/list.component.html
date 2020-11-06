@@ -1,8 +1,10 @@
 <div class="row">
   <div class="col-md-12">
     <nb-card class="inline-form-card">
-      <nb-card-header>Search - Gender <!-- <nb-icon class="action-icon" icon="refresh-outline" (click)="clear()"
-        style="margin-left: 30px;"></nb-icon> --></nb-card-header> 
+      <nb-card-header>Search - Gender
+        <!-- <nb-icon class="action-icon" icon="refresh-outline" (click)="clear()"
+        style="margin-left: 30px;"></nb-icon> -->
+      </nb-card-header>
       <nb-card-body>
         <form class="form-inline">
 
@@ -52,12 +54,16 @@
               placeholder="Popularity">
           </div>
 
-          <nb-actions size="medium"
-            (click)="searchGender(IMDB.value, MetaScore.value, Community_Score.value, Popularity.value)"
-            style="cursor: pointer;">
-            <nb-action style="padding: 0 !important; margin-top: 15px;">
+          <nb-actions size="medium" style="margin-top: 20px;">
+            <nb-action style="padding: 0 !important; margin-top: 15px; margin-right: 10px;"
+              (click)="searchGender(IMDB.value, MetaScore.value, Community_Score.value, Popularity.value)"
+              style="cursor: pointer;">
               <nb-icon class="action-icon" icon="search-outline"></nb-icon>
               <span>Search</span>
+            </nb-action>
+            <nb-action style="padding: 0 !important;" (click)="clear()">
+              <nb-icon class="action-icon" icon="trash-outline" style=" margin-left: 10px;"></nb-icon>
+              <span>Clear</span>
             </nb-action>
           </nb-actions>
         </form>
@@ -70,9 +76,9 @@
   <div class="row justify-content-md-center ">
     <nb-alert outline="warning">It is not possible to execute this functionality</nb-alert>
   </div>
-  <div class="row justify-content-md-center ">
+<!--   <div class="row justify-content-md-center ">
     <nb-icon class="action-icon" icon="trash-outline" (click)="clear()"></nb-icon>
-  </div>
+  </div> -->
 </div>
 
 <div class="container" *ngIf="$Movies.length  == 0 && !showAlertMovie">
@@ -88,6 +94,15 @@
 
     <nb-card size="medium">
       <div class="picture"><img class="image" src="{{movie.Image}}" alt="Italian Trulli"></div>
+
+      <div *ngIf="showColors">
+        <div *ngIf="movie.Avarage >= 80"
+          style="width: 100%; height: 10px; background-color: rgb(115, 167, 31); position: relative; z-index: 2;"></div>
+        <div *ngIf="movie.Avarage >= 40 && movie.Avarage < 80"
+          style="width: 100%; height: 10px; background-color: rgb(255, 230, 0); position: relative; z-index: 2;"></div>
+        <div *ngIf="movie.Avarage >= 0 && movie.Avarage < 40"
+          style="width: 100%; height: 10px; background-color: rgb(230, 83, 46); position: relative; z-index: 2;"></div>
+      </div>
 
       <div class="details">
         <div class="h4"> {{ movie.Name }} </div>

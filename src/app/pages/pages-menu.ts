@@ -51,7 +51,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'grid-outline',
     children: [
       {
-        title: 'Table',
+        title: 'Table - Movies',
         link: '/pages/tables/smart-table',
       },
 /*       {

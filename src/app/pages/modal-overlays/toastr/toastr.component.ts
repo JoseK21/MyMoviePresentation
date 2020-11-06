@@ -14,7 +14,7 @@ import {
   templateUrl: './toastr.component.html',
 })
 export class ToastrComponent {
-  constructor(private toastrService: NbToastrService) {}
+  constructor(private toastrService: NbToastrService) { }
 
   config: NbToastrConfig;
 
@@ -57,7 +57,7 @@ export class ToastrComponent {
     this.showToast(this.status, this.title, this.content);
   }
 
-  openRandomToast () {
+  openRandomToast() {
     const typeIndex = Math.floor(Math.random() * this.types.length);
     const quoteIndex = Math.floor(Math.random() * this.quotes.length);
     const type = this.types[typeIndex];
@@ -75,12 +75,9 @@ export class ToastrComponent {
       position: this.position,
       preventDuplicates: this.preventDuplicates,
     };
-    const titleContent = title ? `. ${title}` : '';
-
     this.index += 1;
-    this.toastrService.show(
-      body,
-      `Toast ${this.index}${titleContent}`,
-      config);
+    const titleContent = title ? `${this.index}. ${title}` : '';
+
+    this.toastrService.show(body, `${titleContent}`, config);
   }
 }
