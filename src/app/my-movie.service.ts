@@ -18,8 +18,9 @@ export class MyMovieServiceService {
     return this.httpClient.post(this.REST_API_SERVER + '/add', data_movie);
   }
 
-  public getMovieGender(gender) {
-    return this.httpClient.get(this.REST_API_SERVER + '/gender/' + gender);
+  public getMovieGender(data_search) {
+    let {Gender, IMDB, MetaScore, Community_Score, Favorite, Popularity} = data_search;
+    return this.httpClient.get(this.REST_API_SERVER + '/gender/' + Gender + '/'+ IMDB + '/'+ MetaScore + '/'+ Community_Score + '/'+ Favorite + '/' + Popularity );
   }
 
   public getMovieSearch(search) {

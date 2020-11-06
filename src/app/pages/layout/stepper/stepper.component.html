@@ -17,15 +17,15 @@
   <div class="col-md-12">
     <nb-card>
       <nb-card-header>
-        Search by Movie Title
+        Search - Name
       </nb-card-header>
       <nb-card-body>
         <nb-search type="modal-move" tag="modal-move"></nb-search>
         <span style="margin-left: 10px;">{{value}}
-          <nb-actions style="display: inline-block;" *ngIf="value != ''" size="small">
+          <!-- <nb-actions style="display: inline-block;" *ngIf="value != ''" size="small">
             <nb-action style="top: 5px; padding: 0 0.25rem !important;" icon="close-outline" (click)="clear()">
             </nb-action>
-          </nb-actions>
+          </nb-actions> -->
         </span>
       </nb-card-body>
     </nb-card>
@@ -35,6 +35,9 @@
 <div class="container" *ngIf="showAlertMovie">
   <div class="row justify-content-md-center">
     <nb-alert outline="danger">This title was not found</nb-alert>
+  </div>
+  <div class="row justify-content-md-center ">
+    <nb-icon class="action-icon" icon="trash-outline" (click)="clear()"></nb-icon>
   </div>
 </div>
 

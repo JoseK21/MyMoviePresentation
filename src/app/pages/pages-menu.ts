@@ -17,19 +17,20 @@ export const MENU_ITEMS: NbMenuItem[] = [
     group: true,
   },
   {
-    title: 'Read Movies',
+    title: 'Clients',
     icon: 'layout-outline',
     home: true,
     children: [
       {
-        title: 'Movie Cards',
+        title: 'Search - Name',
         link: '/pages/layout/stepper',
         
       },
-      /* {
-        title: 'List',
+      {
+        title: 'Search - Gender',
         link: '/pages/layout/list',
       },
+      /* 
       {
         title: 'Infinite List',
         link: '/pages/layout/infinite-list',
@@ -46,7 +47,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ],
   },
   {
-    title: 'C_UD Movies',
+    title: 'Admin',
     icon: 'grid-outline',
     children: [
       {

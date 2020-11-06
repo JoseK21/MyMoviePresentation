@@ -1,26 +1,109 @@
-<div class="lists row">
-  <div class="col-md-12 col-lg-6 col-xxxl-6">
-    <nb-card class="list-card">
-      <nb-card-header>Some Fruits</nb-card-header>
+<div class="row">
+  <div class="col-md-12">
+    <nb-card class="inline-form-card">
+      <nb-card-header>Search - Gender <!-- <nb-icon class="action-icon" icon="refresh-outline" (click)="clear()"
+        style="margin-left: 30px;"></nb-icon> --></nb-card-header> 
       <nb-card-body>
-        <nb-list>
-          <nb-list-item *ngFor="let fruit of fruits">
-            {{ fruit }}
-          </nb-list-item>
-        </nb-list>
+        <form class="form-inline">
+
+          <div class="f">
+            <span>Gender</span>
+            <nb-select selected="Action" [selected]="currentGender" (selectedChange)="changeGender($event)" xfullWidth>
+              <nb-option value="Action">Action</nb-option>
+              <nb-option value="Adventure">Adventure</nb-option>
+              <nb-option value="Science fiction">Science fiction</nb-option>
+              <nb-option value="Comedy">Comedy</nb-option>
+              <nb-option value="Crime">Crime</nb-option>
+              <nb-option value="Musicals">Musicals</nb-option>
+              <nb-option value="Romance">Romance</nb-option>
+              <nb-option value="Suspense">Suspense</nb-option>
+              <nb-option value="Terror">Terror</nb-option>
+            </nb-select>
+          </div>
+
+          <div class="f">
+            <span>IMDB</span>
+            <input id="IMDB" #IMDB type="number" min="0" max="35" nbInput fullWidth placeholder="IMDB">
+          </div>
+
+          <div class="f">
+            <span>MetaScore</span>
+            <input id="MetaScore" #MetaScore type="number" min="0" max="35" nbInput fullWidth placeholder="MetaScore">
+          </div>
+
+          <div class="f">
+            <span>Community_Score</span>
+            <input id="Community_Score" #Community_Score type="number" min="0" max="35" nbInput fullWidth
+              placeholder="Community_Score">
+          </div>
+
+          <div class="f">
+            <span>Favorite</span>
+            <nb-select selected="Action" [selected]="currentFavorite" (selectedChange)="changeFavorite($event)"
+              fullWidth>
+              <nb-option value="1">True</nb-option>
+              <nb-option value="0">False</nb-option>
+            </nb-select>
+          </div>
+
+          <div class="f">
+            <span>Popularity</span>
+            <input id="Popularity" #Popularity type="number" min="0" max="35" nbInput fullWidth
+              placeholder="Popularity">
+          </div>
+
+          <nb-actions size="medium"
+            (click)="searchGender(IMDB.value, MetaScore.value, Community_Score.value, Popularity.value)"
+            style="cursor: pointer;">
+            <nb-action style="padding: 0 !important; margin-top: 15px;">
+              <nb-icon class="action-icon" icon="search-outline"></nb-icon>
+              <span>Search</span>
+            </nb-action>
+          </nb-actions>
+        </form>
       </nb-card-body>
     </nb-card>
   </div>
+</div>
 
-  <div class="col-md-12 col-lg-6 col-xxxl-6">
-    <nb-card class="list-card" size="small">
-      <nb-card-header>Users</nb-card-header>
-      <nb-list>
-        <nb-list-item *ngFor="let user of users">
-          <nb-user [name]="user.name" [title]="user.title">
-          </nb-user>
-        </nb-list-item>
-      </nb-list>
+<div class="container" *ngIf="showAlertMovie">
+  <div class="row justify-content-md-center ">
+    <nb-alert outline="warning">It is not possible to execute this functionality</nb-alert>
+  </div>
+  <div class="row justify-content-md-center ">
+    <nb-icon class="action-icon" icon="trash-outline" (click)="clear()"></nb-icon>
+  </div>
+</div>
+
+<div class="container" *ngIf="$Movies.length  == 0 && !showAlertMovie">
+  <div class="row justify-content-md-center">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</div>
+
+<div class="step-content row">
+  <div class="col-md-12 col-lg-2 col-xxxl-2" *ngFor="let movie of $Movies">
+
+    <nb-card size="medium">
+      <div class="picture"><img class="image" src="{{movie.Image}}" alt="Italian Trulli"></div>
+
+      <div class="details">
+        <div class="h4"> {{ movie.Name }} </div>
+      </div>
+
+      <nb-card-footer>
+        <div style="display: flex; align-items: center; cursor: pointer; color: #3366ff;"
+          (click)="showModalReview(movie.ID, movie.Name)">
+          <nb-icon icon="file-text-outline" pack="eva"></nb-icon>
+          Review
+        </div>
+        <div style="display: flex; align-items: center; cursor: pointer; color: #3366ff;" (click)="open(movie)">
+          <nb-icon icon="film-outline" pack="eva"></nb-icon>
+          Profile
+        </div>
+      </nb-card-footer>
     </nb-card>
   </div>
 </div>

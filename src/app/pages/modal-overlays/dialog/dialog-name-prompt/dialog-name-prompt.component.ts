@@ -36,7 +36,7 @@ export class DialogNamePromptComponent {
   submit(comment: string, note: string) {
 
 
-    let data = { 'comment': comment, 'note': note }
+    let data = { 'comment': comment, 'note': parseInt(note) }
     console.log('data>', data);
 
     if (comment.trim() == '' || note.trim() == '') {

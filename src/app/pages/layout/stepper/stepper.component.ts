@@ -75,9 +75,6 @@ export class StepperComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    //this._getMovieGender('Accion')
-    //this._getMovieSearch('Avengers')
     this.getMovies();
 
     this.firstForm = this.fb.group({

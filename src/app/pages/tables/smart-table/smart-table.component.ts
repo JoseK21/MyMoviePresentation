@@ -60,16 +60,16 @@ export class SmartTableComponent {
         editor: {
           type: 'list',
           config: {
-            selectText: 'Select',
+            selectText: 'Action',
             list: [
-              { value: 'Acción', title: 'Acción' },
-              { value: 'Aventura', title: 'Aventura' },
-              { value: 'Ciencia ficción', title: 'Ciencia ficción' },
-              { value: 'Comedia', title: 'Comedia' },
-              { value: 'Crimen', title: 'Crimen' },
-              { value: 'Musicales', title: 'Musicales' },
+              { value: 'Action', title: 'Action' },
+              { value: 'Adventure', title: 'Adventure' },
+              { value: 'Science fiction', title: 'Science fiction' },
+              { value: 'Comedy', title: 'Comedy' },
+              { value: 'Crime', title: 'Crime' },
+              { value: 'Musicals', title: 'Musicals' },
               { value: 'Romance', title: 'Romance' },
-              { value: 'Suspenso', title: 'Suspenso' },
+              { value: 'Suspense', title: 'Suspense' },
               { value: 'Terror', title: 'Terror' }
             ]
           },

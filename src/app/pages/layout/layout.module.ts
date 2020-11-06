@@ -14,6 +14,7 @@ import {
   NbInputModule,
   NbActionsModule,
   NbSpinnerModule,
+  NbSelectModule,
 } from '@nebular/theme';
 
 import { ThemeModule } from '../../@theme/theme.module';
@@ -53,6 +54,7 @@ import { NbAlertModule, NbPopoverModule, NbSearchModule } from '@nebular/theme';
     NbAlertModule,
     NbActionsModule,
     NbSpinnerModule,
+    NbSelectModule,
   ],
   declarations: [
     LayoutComponent,
