@@ -15,11 +15,11 @@ export class DialogComponent {
   constructor(private dialogService: NbDialogService) {}
 
   open() {
-    this.dialogService.open(ShowcaseDialogComponent, {
+    /* this.dialogService.open(ShowcaseDialogComponent, {
       context: {
-        title: 'This is a title passed to the dialog component',
+        data: 'This is a title passed to the dialog component',
       },
-    });
+    }); */
   }
 
   open2(dialog: TemplateRef<any>) {

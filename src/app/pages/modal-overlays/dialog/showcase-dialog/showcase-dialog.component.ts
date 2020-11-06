@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NbDialogRef } from '@nebular/theme';
 
 @Component({
@@ -6,12 +6,18 @@ import { NbDialogRef } from '@nebular/theme';
   templateUrl: 'showcase-dialog.component.html',
   styleUrls: ['showcase-dialog.component.scss'],
 })
-export class ShowcaseDialogComponent {
+export class ShowcaseDialogComponent implements OnInit {
 
-  @Input() title: string;
+  @Input() data: object;
 
   constructor(protected ref: NbDialogRef<ShowcaseDialogComponent>) {}
 
+  title = 'test'
+
+  ngOnInit() {
+    console.log(this.data);
+    
+  }
   dismiss() {
     this.ref.close();
   }

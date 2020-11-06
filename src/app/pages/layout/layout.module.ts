@@ -1,15 +1,19 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
+  NbRouteTabsetModule,
   NbAccordionModule,
+  NbCheckboxModule,
+  NbStepperModule,
+  NbTabsetModule,
   NbButtonModule,
   NbCardModule,
   NbListModule,
-  NbRouteTabsetModule,
-  NbStepperModule,
-  NbTabsetModule,
   NbUserModule,
   NbIconModule,
+  NbInputModule,
+  NbActionsModule,
+  NbSpinnerModule,
 } from '@nebular/theme';
 
 import { ThemeModule } from '../../@theme/theme.module';
@@ -23,22 +27,32 @@ import { NewsPostComponent } from './infinite-list/news-post/news-post.component
 import { NewsPostPlaceholderComponent } from './infinite-list/news-post-placeholder/news-post-placeholder.component';
 import { AccordionComponent } from './accordion/accordion.component';
 import { NewsService } from './news.service';
+import { NbAlertModule, NbPopoverModule, NbSearchModule } from '@nebular/theme';
 
 @NgModule({
   imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    ThemeModule,
-    NbTabsetModule,
-    NbRouteTabsetModule,
-    NbStepperModule,
-    NbCardModule,
-    NbButtonModule,
-    NbListModule,
-    NbAccordionModule,
-    NbUserModule,
     LayoutRoutingModule,
+    ReactiveFormsModule,
+    NbRouteTabsetModule,
+    NbAccordionModule,
+    NbStepperModule,
+    NbTabsetModule,
+    NbCheckboxModule,
+    NbButtonModule,
+    NbInputModule,
+    NbCardModule,
+    NbListModule,
+    NbUserModule,
     NbIconModule,
+    FormsModule,
+    ThemeModule,
+    NbCardModule,
+    NbPopoverModule,
+    NbSearchModule,
+    NbIconModule,
+    NbAlertModule,
+    NbActionsModule,
+    NbSpinnerModule,
   ],
   declarations: [
     LayoutComponent,

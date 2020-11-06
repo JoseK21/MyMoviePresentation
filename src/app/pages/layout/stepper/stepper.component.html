@@ -1,3 +1,60 @@
+<!-- <div class="row">
+  <div class="col-md-12">
+    <nb-card class="inline-form-card">
+      <nb-card-header>Inline form</nb-card-header>
+      <nb-card-body>
+        <form class="form-inline">
+          <input type="text" nbInput fullWidth placeholder="Jane Doe">
+          <input type="text" nbInput fullWidth placeholder="Email">
+          <nb-checkbox>Remember me</nb-checkbox>
+        </form>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div> -->
+
+<div class="row">
+  <div class="col-md-12">
+    <nb-card>
+      <nb-card-header>
+        Search by Movie Title
+      </nb-card-header>
+      <nb-card-body>
+        <nb-search type="modal-move" tag="modal-move"></nb-search>
+        <span style="margin-left: 10px;">{{value}}
+          <nb-actions style="display: inline-block;" *ngIf="value != ''" size="small">
+            <nb-action style="top: 5px; padding: 0 0.25rem !important;" icon="close-outline" (click)="clear()">
+            </nb-action>
+          </nb-actions>
+        </span>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
+
+<div class="container" *ngIf="showAlertMovie">
+  <div class="row justify-content-md-center">
+    <nb-alert outline="danger">This title was not found</nb-alert>
+  </div>
+</div>
+
+<div class="container" *ngIf="$Movies.length  == 0 && !showAlertMovie">
+  <div class="row justify-content-md-center">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="col-md-12 col-lg-6 col-xxxl-3">
+  <nb-card>
+    <nb-card-header>Open Without Backdrop</nb-card-header>
+    <nb-card-body>
+      <button nbButton (click)="open()">Open Dialog with backdrop</button>
+    </nb-card-body>
+  </nb-card>
+</div> -->
+
 <div class="step-content row">
   <div class="col-md-12 col-lg-2 col-xxxl-2" *ngFor="let movie of $Movies">
 
@@ -6,25 +63,17 @@
 
       <div class="details">
         <div class="h4"> {{ movie.Name }} </div>
-        <div class="description">
-          UI Kitten is a framework that contains a set of commonly used UI.
-        </div>
       </div>
 
       <nb-card-footer>
-        <a href="https://akveo.github.io/react-native-ui-kitten?utm_campaign=ui_kitten%20-%20home%20-%20ngx_admin%20code%20embed&utm_source=ngx_admin&utm_medium=embedded&utm_content=iot_dashboard_kitten_card"
-          target="_blank">
-          <nb-icon icon="globe" pack="eva"></nb-icon>
-        </a>
-        <a href="https://itunes.apple.com/us/app/kitten-tricks/id1246143230" target="_blank">
-          <i class="link-icon ion-social-apple"></i>
-        </a>
-        <a href="https://play.google.com/store/apps/details?id=com.akveo.kittenTricks" target="_blank">
-          <i class="link-icon ion-social-android"></i>
-        </a>
-        <a href="https://github.com/akveo/react-native-ui-kitten" target="_blank">
-          <nb-icon icon="github" pack="eva"></nb-icon>
-        </a>
+        <div style="display: flex; align-items: center; cursor: pointer; color: #3366ff;" (click)="showModalReview(movie.ID, movie.Name)">
+          <nb-icon icon="file-text-outline" pack="eva"></nb-icon>
+          Review
+        </div>
+        <div style="display: flex; align-items: center; cursor: pointer; color: #3366ff;" (click)="open(movie)">
+          <nb-icon icon="film-outline" pack="eva"></nb-icon>
+          Profile
+        </div>
       </nb-card-footer>
     </nb-card>
   </div>

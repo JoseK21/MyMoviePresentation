@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NbDialogRef } from '@nebular/theme';
 
 @Component({
@@ -8,13 +8,17 @@ import { NbDialogRef } from '@nebular/theme';
 })
 export class DialogNamePromptComponent {
 
+  @Input() name: string;
+
   constructor(protected ref: NbDialogRef<DialogNamePromptComponent>) {}
 
   cancel() {
     this.ref.close();
   }
 
-  submit(name) {
-    this.ref.close(name);
+  submit(comment, note) {
+    let data = {'comment': comment, 'note': note}
+    
+    this.ref.close(data);
   }
 }
