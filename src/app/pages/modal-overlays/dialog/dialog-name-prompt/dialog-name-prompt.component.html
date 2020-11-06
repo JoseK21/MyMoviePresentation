@@ -1,8 +1,10 @@
 <nb-card>
   <nb-card-header>Review - {{name}} </nb-card-header>
   <nb-card-body>
+    <label>Comment</label>
     <input #comment nbInput placeholder="Comment" style="max-width: 100% !important;">
-    <input #note nbInput placeholder="Note" style="margin-top: 5px; max-width: 100% !important;">
+    <label style="margin-top: 5px;">Note</label>
+    <input #note nbInput placeholder="Note" type="number" max="10" style="max-width: 100% !important;">
   </nb-card-body>
   <nb-card-footer>
     <button class="cancel" nbButton status="danger" (click)="cancel()">Cancel</button>
