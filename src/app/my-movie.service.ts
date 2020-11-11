@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MyMovieServiceService {
 
-  private REST_API_SERVER = "http://localhost:5000/api";
+  private REST_API_SERVER = "https://apimymovie.azurewebsites.net/api";
 
   constructor(private httpClient: HttpClient) { }
 
